@@ -12,3 +12,4 @@ ultralytics
 torch
 torchvision
 torchaudio
+label-studio
