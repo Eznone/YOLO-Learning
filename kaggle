@@ -1,6 +1,7 @@
 import kagglehub
+from kaggle.api.kaggle_api_extended import KaggleApi
 
-# Download latest version
+# Global variables
 
 
 def get_path():
@@ -8,3 +9,17 @@ def get_path():
     print("Path to dataset files:", path)
     return path
 
+class KaggleClient:
+    def __init__(self, api_key=None):
+        self.api_key = KaggleApi()
+        if api_key:
+            self.authenticate()
+
+    def download_dataset(self, dataset_ident, output_path):
+        self.api_key.dataset_download_files(dataset_ident, path=output_path)
+        path = kagglehub.dataset_download(dataset_ident)
+        print(f"Downloaded dataset {dataset_ident} to {path}")
+        return path
+    
+    def authenticate(self):
+        self.api_key.authenticate(self.api_key)
