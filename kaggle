@@ -1,0 +1,10 @@
+import kagglehub
+
+# Download latest version
+
+
+def get_path():
+    path = kagglehub.dataset_download("ashfakyeafi/glasses-classification-dataset")
+    print("Path to dataset files:", path)
+    return path
+
